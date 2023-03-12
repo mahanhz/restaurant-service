@@ -1,0 +1,13 @@
+version: '3.1'
+services:
+  mysql:
+    build:
+      context: mysql-setup
+    command: --server-id=11
+      --log-bin=mysql-bin
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+    volumes:
+      - /var/lib/mysql
+    ports:
+      - 3306:3306

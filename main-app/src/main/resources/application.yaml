@@ -1,0 +1,6 @@
+server:
+  port: 8011
+
+spring:
+  liquibase:
+    change-log: classpath:db/changelog/db-changelog-master.yaml

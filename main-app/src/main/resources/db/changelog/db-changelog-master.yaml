@@ -1,0 +1,56 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1_create_items_table
+      author: mahanh
+      changes:
+        - sqlFile:
+            dbms: mysql
+            encoding: utf8
+            path: scripts/0001-create-items-table.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+  - changeSet:
+        id: 2_create_orders_table
+        author: mahanh
+        changes:
+            - sqlFile:
+                  dbms: mysql
+                  encoding: utf8
+                  path: scripts/0002-create-orders-table.sql
+                  relativeToChangelogFile: true
+                  splitStatements: true
+                  stripComments: true
+  - changeSet:
+      id: 3_create_orders_items_table
+      author: mahanh
+      changes:
+        - sqlFile:
+            dbms: mysql
+            encoding: utf8
+            path: scripts/0003-create-orders-items-table.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+  - changeSet:
+      id: 4_create_chefs_table
+      author: mahanh
+      changes:
+        - sqlFile:
+            dbms: mysql
+            encoding: utf8
+            path: scripts/0004-create-chefs-table.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+  - changeSet:
+      id: 5_create_chefs_orders_table
+      author: mahanh
+      changes:
+        - sqlFile:
+            dbms: mysql
+            encoding: utf8
+            path: scripts/0005-create-chefs-orders-table.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+    <shutdownHook class="ch.qos.logback.core.hook.DelayingShutdownHook"/>
+
+    <!-- This will help diagnose logback issues -->
+    <statusListener class="ch.qos.logback.core.status.OnConsoleStatusListener" />
+
+    <property name="APP_LOGGER" value="com.example.restaurant" />
+
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] [%marker] [t: %X{trace_id}] [s: %X{span_id}] [tf: %X{trace_flags}] %level %logger - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="ASYNC_STDOUT" class="ch.qos.logback.classic.AsyncAppender">
+        <appender-ref ref="STDOUT"/>
+    </appender>
+
+    <appender name="OTEL" class="io.opentelemetry.instrumentation.logback.v1_0.OpenTelemetryAppender">
+        <appender-ref ref="ASYNC_STDOUT"/>
+    </appender>
+
+    <root level="${ROOT_LOG_LEVEL:-WARN}">
+        <appender-ref ref="OTEL"/>
+    </root>
+
+    <logger name="${APP_LOGGER}" level="${APP_LOG_LEVEL:-INFO}" additivity="false">
+        <appender-ref ref="OTEL"/>
+    </logger>
+
+</configuration>

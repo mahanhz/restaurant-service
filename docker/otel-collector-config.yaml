@@ -1,0 +1,58 @@
+receivers:
+  otlp:
+    protocols:
+      grpc:
+      http:
+  fluentforward:
+    endpoint: 0.0.0.0:8006
+
+exporters:
+  prometheus:
+    endpoint: "0.0.0.0:8889"
+
+  logging:
+
+  splunk_hec:
+    endpoint: http://host.docker.internal:8088
+    token: abcd1234
+    source: "otel"
+    sourcetype: "otel"
+
+  jaeger:
+    endpoint: jaeger-all-in-one:14250
+    tls:
+      insecure: true
+
+processors:
+  batch:
+  attributes:
+    actions:
+      - action: insert
+        key: foo1
+        value: bar1
+  resourcedetection:
+    detectors: [system]
+    override: false
+
+extensions:
+  health_check:
+  pprof:
+    endpoint: :1888
+  zpages:
+    endpoint: :55679
+
+service:
+  extensions: [pprof, zpages, health_check]
+  pipelines:
+    logs:
+      receivers: [fluentforward]
+      processors: [batch]
+      exporters: [logging, splunk_hec]
+    traces:
+      receivers: [otlp]
+      processors: [batch]
+      exporters: [logging, jaeger]
+    metrics:
+      receivers: [otlp]
+      processors: [batch]
+      exporters: [logging, prometheus]

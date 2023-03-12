@@ -1,0 +1,14 @@
+@startuml
+object Order
+object OrderId
+object Item
+
+Order : date: LocalDate
+OrderId : value: Long
+Name : value: String (2..200)
+
+Order *-- OrderId
+Order *-- Item
+
+Item *-- Name
+@enduml
