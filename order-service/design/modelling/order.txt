@@ -1,14 +1,18 @@
 @startuml
 object Order
-object OrderId
 object Item
 
-Order : date: LocalDate
 OrderId : value: Long
-Name : value: String (2..200)
-
+Order : id: OrderId
+Order : date: LocalDate
+Order : state: Enum
+Order : items: Set<Item>
 Order *-- OrderId
 Order *-- Item
 
+Name : value: String (2..200)
+
+Item : name: Name
+Item : quantity: Integer
 Item *-- Name
 @enduml

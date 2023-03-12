@@ -1,0 +1,12 @@
+@startuml
+object Chef
+
+Name : value: String (2..200)
+
+Id : value: Long
+Chef : id: OrderId
+Chef : name: Name
+Chef : orders: Set<Id>
+Chef *-- Id
+Chef *-- Name
+@enduml
