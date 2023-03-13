@@ -23,6 +23,8 @@ This project is connected to the following article
 
 # Running tests and building artifact
 
+The integration tests use TestContainers so docker is needed. See https://www.testcontainers.org/#prerequisites  
+
 ## Linux 
 * Run unit and integration tests (and builds the artifact): **./gradlew clean build**
 * Run acceptance tests: **./gradlew acceptanceTest**
