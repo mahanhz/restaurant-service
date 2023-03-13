@@ -157,3 +157,5 @@ gradle-app.setting
 # End of https://www.toptal.com/developers/gitignore/api/kotlin,java,gradle,intellij+all
 build/kotlin/sessions/kotlin-compiler-15891931284315279757.salive
 build/
+
+**/.DS_Store
