@@ -1,4 +1,4 @@
-This project is connected to the following article
+This project is connected to the article ["A path to production"](https://mahanhz.medium.com/a-path-to-production-4928a71e5de7)
 
 # Contents
 
