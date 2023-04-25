@@ -5,6 +5,7 @@ plugins {
     kotlin("jvm")
     kotlin("plugin.spring")
     kotlin("plugin.allopen")
+
     java
     jacoco
 }

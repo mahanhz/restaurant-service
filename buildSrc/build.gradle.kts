@@ -2,9 +2,6 @@ plugins {
     id("org.springframework.boot") apply false
     id("io.spring.dependency-management")
     id("com.gorylenko.gradle-git-properties")
-    kotlin("jvm")
-    kotlin("plugin.spring")
-    kotlin("plugin.allopen")
 
     `kotlin-dsl`
 }
