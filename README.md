@@ -58,6 +58,38 @@ Linux: **OTEL_SERVICE_NAME=restaurant-service OTEL_EXPORTER_OTLP_ENDPOINT="http:
 
 Windows:  **java -javaagent:.\opentelemetry-javaagent.jar "-Dspring.profiles.active=local" "-DOTEL_SERVICE_NAME=restaurant-service" "-DOTEL_EXPORTER_OTLP_ENDPOINT=http://localhost:4317" -jar .\main-app\build\libs\restaurant-service-boot.jar**
 
+# REST commands
+
+**Swagger UI:** http://localhost:8011/swagger-ui.html
+
+## Create a chef
+POST http://localhost:8011/chefs
+```json
+{
+  "chef": "Ratata"
+}
+```
+
+## Get a chef
+GET http://localhost:8011/chef/1
+
+## Create an order
+POST http://localhost:8011/orders
+```json
+{
+    "date": "2023-04-01",
+    "items": [
+        {
+            "name": "Burger",
+            "quantity": 1
+        }
+    ]
+}
+```
+
+## Get an order
+GET http://localhost:8011/orders/1
+
 # Observability
 
 ## Jaeger (tracing)
