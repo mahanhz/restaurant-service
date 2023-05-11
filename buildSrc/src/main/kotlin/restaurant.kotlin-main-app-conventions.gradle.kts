@@ -19,6 +19,13 @@ dependencies {
 	runtimeOnly("io.opentelemetry.instrumentation:opentelemetry-logback-1.0:${versions["openTelemetryLogbackVersion"]}")
 
 	implementation("org.liquibase:liquibase-core:${versions["liquibaseVersion"]}")
+
+	testImplementation("org.springframework.boot:spring-boot-starter-test")
+	testImplementation("com.tngtech.archunit:archunit-junit5:${versions["archUnitVersion"]}")
+}
+
+tasks.withType<Test> {
+	useJUnitPlatform()
 }
 
 springBoot {

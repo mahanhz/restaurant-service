@@ -1,17 +1,17 @@
-package com.example.restaurant.orderservice.architecture
+package com.example.restaurant.architecture
 
+import com.example.restaurant.kitchenservice.KitchenApplication
+import com.example.restaurant.orderservice.OrderApplication
 import com.tngtech.archunit.junit.AnalyzeClasses
 import com.tngtech.archunit.junit.ArchTest
 import com.tngtech.archunit.lang.ArchRule
 import com.tngtech.archunit.lang.syntax.ArchRuleDefinition.noClasses
-import com.example.restaurant.orderservice.OrderApplication
-
 
 private const val PACKAGE_APPLICATION = "..application.."
 private const val PACKAGE_DOMAIN = "..domain.."
 private const val PACKAGE_INFRA = "..infra.."
 
-@AnalyzeClasses(packagesOf = [OrderApplication::class])
+@AnalyzeClasses(packagesOf = [KitchenApplication::class, OrderApplication::class])
 class HexagonalArchitectureTest {
 
     @ArchTest
