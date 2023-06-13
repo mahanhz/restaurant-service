@@ -14,7 +14,7 @@ internal class ChefKoTest : StringSpec({
             table(
                 headers("id", "name", "orderId"),
                 row(1, "Jo", 4),
-                row(200, "b".repeat(200), 100),
+                row(200, "b".repeat(200), 100)
             )
         ) { id: Long, name: String, orderId: Long ->
             Chef(
@@ -30,8 +30,8 @@ internal class ChefKoTest : StringSpec({
             table(
                 headers("id", "name", "orderId", "message"),
                 row(1, "", 4, "Name cannot be blank"),
-                row(2, "a", 1,"Name must be at least 2 characters and no more than 200"),
-                row(100, "b".repeat(201), 200, "Name must be at least 2 characters and no more than 200"),
+                row(2, "a", 1, "Name must be at least 2 characters and no more than 200"),
+                row(100, "b".repeat(201), 200, "Name must be at least 2 characters and no more than 200")
             )
         ) { id: Long, name: String, orderId: Long, message: String ->
             val exception = shouldThrow<IllegalArgumentException> {

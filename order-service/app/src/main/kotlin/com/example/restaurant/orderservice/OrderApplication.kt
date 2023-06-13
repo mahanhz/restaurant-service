@@ -15,4 +15,3 @@ fun main(args: Array<String>) {
 @Configuration
 @EnableJpaRepositories(basePackages = ["com.example.restaurant.orderservice"])
 class OrderJpaConfig
-

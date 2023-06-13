@@ -6,7 +6,7 @@ import com.fasterxml.jackson.databind.JsonNode
 import com.fasterxml.jackson.databind.node.ObjectNode
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 
-class OrderCreatedEvent(private val id: Long, private val payload: JsonNode): ExportedEvent {
+class OrderCreatedEvent(private val id: Long, private val payload: JsonNode) : ExportedEvent {
 
     companion object {
         private val mapper = jacksonObjectMapper()
@@ -31,7 +31,7 @@ class OrderCreatedEvent(private val id: Long, private val payload: JsonNode): Ex
     }
 
     override fun aggregateId(): String {
-        return id.toString();
+        return id.toString()
     }
 
     override fun aggregateType(): String {

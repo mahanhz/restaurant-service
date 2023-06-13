@@ -2,7 +2,7 @@ plugins {
     id("org.springframework.boot") apply false
     id("io.spring.dependency-management")
     id("com.gorylenko.gradle-git-properties")
-    // id("org.jlleitschuh.gradle.ktlint")
+    id("org.jlleitschuh.gradle.ktlint")
 
     `kotlin-dsl`
 }
@@ -33,5 +33,5 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-gradle-plugin:$springBootVersion")
     implementation("com.gorylenko.gradle-git-properties:gradle-git-properties:$gitPropertiesVersion")
 
-    // implementation("org.jlleitschuh.gradle.ktlint:org.jlleitschuh.gradle.ktlint.gradle.plugin:11.3.1")
+    implementation("org.jlleitschuh.gradle.ktlint:org.jlleitschuh.gradle.ktlint.gradle.plugin:11.3.1")
 }

@@ -17,21 +17,25 @@ import java.util.stream.Collectors
 @Component
 class OrderCommandHandler(
     private val orderService: OrderService,
-    private val eventPublisher: ApplicationEventPublisher) {
+    private val eventPublisher: ApplicationEventPublisher
+) {
 
     val logger: Logger = LoggerFactory.getLogger(OrderCommandHandler::class.java)
 
     @Transactional
     fun createOrder(order: OrderApi): OrderApi {
         val items = order.items.stream().map {
-            Item(name=Name(it.name), quantity = it.quantity)
+            Item(name = Name(it.name), quantity = it.quantity)
         }.collect(Collectors.toSet())
-        val createdOrder = orderService.createOrder(date=order.date, items=items)
+        val createdOrder = orderService.createOrder(date = order.date, items = items)
 
         eventPublisher.publishEvent(OrderCreatedEvent.of(createdOrder))
 
         return OrderApi(
-            id = createdOrder.id.value, date = createdOrder.date, items = order.items, state = createdOrder.state.toString()
+            id = createdOrder.id.value,
+            date = createdOrder.date,
+            items = order.items,
+            state = createdOrder.state.toString()
         )
     }
 
@@ -39,8 +43,10 @@ class OrderCommandHandler(
         val order = orderService.order(id = OrderId(value = id))
 
         return OrderApi(
-            id = order.id.value, date = order.date, items = order.items.stream().map {
-                ItemApi(name=it.name.value, quantity = it.quantity)
+            id = order.id.value,
+            date = order.date,
+            items = order.items.stream().map {
+                ItemApi(name = it.name.value, quantity = it.quantity)
             }.collect(Collectors.toSet()),
             state = order.state.toString()
         )

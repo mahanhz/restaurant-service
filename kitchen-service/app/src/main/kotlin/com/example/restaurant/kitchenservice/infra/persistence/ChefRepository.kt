@@ -5,5 +5,4 @@ import java.util.*
 
 internal interface ChefRepository : CrudRepository<ChefEntity, Long> {
     fun findByName(name: String?): Optional<ChefEntity>
-
 }

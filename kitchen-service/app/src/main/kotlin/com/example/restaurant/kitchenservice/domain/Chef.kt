@@ -1,6 +1,6 @@
 package com.example.restaurant.kitchenservice.domain
 
-data class Chef (
+data class Chef(
     val id: Id,
     val name: Name,
     val orders: Set<Id>
@@ -11,7 +11,6 @@ data class Chef (
 }
 
 @JvmInline
-value class Id (
+value class Id(
     val value: Long
 )
-

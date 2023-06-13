@@ -10,15 +10,15 @@ import org.springframework.boot.test.autoconfigure.json.JsonTest
 import org.springframework.boot.test.json.JacksonTester
 import java.time.LocalDate
 
-
 @JsonTest
 internal class OrderApiKotestIT(
     @Autowired private val json: JacksonTester<OrderApi>
-): IntegrationTest, ShouldSpec ({
+) : IntegrationTest, ShouldSpec({
     should("serialize") {
         val orderApi = OrderApi(
-            id = 1234, date = LocalDate.of(2023, 3, 5),
-            items = setOf(ItemApi(name = "Burger", quantity = 1)),
+            id = 1234,
+            date = LocalDate.of(2023, 3, 5),
+            items = setOf(ItemApi(name = "Burger", quantity = 1))
         )
 
         json.write(orderApi).json.shouldContainJsonKeyValue("@.id", 1234)
@@ -32,7 +32,7 @@ internal class OrderApiKotestIT(
         json.parse(content).`object` shouldBe OrderApi(
             id = 1234,
             date = LocalDate.of(2023, 3, 5),
-            items = setOf(ItemApi(name = "Burger", quantity = 1)),
+            items = setOf(ItemApi(name = "Burger", quantity = 1))
         )
     }
 })

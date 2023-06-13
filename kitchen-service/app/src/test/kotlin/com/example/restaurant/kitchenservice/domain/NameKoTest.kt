@@ -14,7 +14,7 @@ internal class NameKoTest : StringSpec({
             table(
                 headers("name"),
                 row("Jo"),
-                row("b".repeat(200)),
+                row("b".repeat(200))
             )
         ) { name: String ->
             Name(name) shouldNotBe null
@@ -27,7 +27,7 @@ internal class NameKoTest : StringSpec({
                 headers("name", "message"),
                 row("", "Name cannot be blank"),
                 row("a", "Name must be at least 2 characters and no more than 200"),
-                row("b".repeat(201), "Name must be at least 2 characters and no more than 200"),
+                row("b".repeat(201), "Name must be at least 2 characters and no more than 200")
             )
         ) { name: String, message: String ->
             val exception = shouldThrow<IllegalArgumentException> {

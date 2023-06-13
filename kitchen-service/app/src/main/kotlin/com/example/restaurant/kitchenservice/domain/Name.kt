@@ -1,7 +1,7 @@
 package com.example.restaurant.kitchenservice.domain
 
 @JvmInline
-value class Name (
+value class Name(
     val value: String
 ) {
     init {

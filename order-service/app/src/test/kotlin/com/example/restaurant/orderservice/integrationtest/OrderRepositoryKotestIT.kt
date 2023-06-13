@@ -11,27 +11,26 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager
 import java.time.LocalDate
 
-
 @DataJpaTest
 internal class OrderRepositoryKotestIT(
-	@Autowired val entityManager: TestEntityManager,
-	@Autowired val repository: OrderRepository
-): DatabaseTest, ShouldSpec({
+    @Autowired val entityManager: TestEntityManager,
+    @Autowired val repository: OrderRepository
+) : DatabaseTest, ShouldSpec({
 
-	should("create a order with items") {
-		val orderName = "Burger"
-		val orderDate = LocalDate.of(2023, 3, 5)
+    should("create a order with items") {
+        val orderName = "Burger"
+        val orderDate = LocalDate.of(2023, 3, 5)
 
-		val itemEntity = ItemEntity(name = orderName, quantity = 1)
-		entityManager.persist(itemEntity)
+        val itemEntity = ItemEntity(name = orderName, quantity = 1)
+        entityManager.persist(itemEntity)
 
-		val orderEntity = OrderEntity(date = orderDate, items = setOf(itemEntity), state = State.CREATED)
-		val savedOrder = entityManager.persist(orderEntity)
+        val orderEntity = OrderEntity(date = orderDate, items = setOf(itemEntity), state = State.CREATED)
+        val savedOrder = entityManager.persist(orderEntity)
 
-		val order = repository.findById(savedOrder.id!!)
-		order.get().date shouldBe orderDate
-		order.get().state shouldBe State.CREATED
-		order.get().items!!.elementAt(0).name shouldBe orderName
-		order.get().items!!.elementAt(0).quantity shouldBe 1
-	}
+        val order = repository.findById(savedOrder.id!!)
+        order.get().date shouldBe orderDate
+        order.get().state shouldBe State.CREATED
+        order.get().items!!.elementAt(0).name shouldBe orderName
+        order.get().items!!.elementAt(0).quantity shouldBe 1
+    }
 })

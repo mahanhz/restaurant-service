@@ -1,8 +1,8 @@
 package com.example.restaurant.orderservice.integrationtest
 
-import com.example.restaurant.orderservice.application.command.OrderCommandHandler
 import com.example.restaurant.orderservice.application.api.ItemApi
 import com.example.restaurant.orderservice.application.api.OrderApi
+import com.example.restaurant.orderservice.application.command.OrderCommandHandler
 import com.example.restaurant.orderservice.domain.event.OrderCreatedEvent
 import com.example.restaurant.orderservice.domain.service.OrderService
 import io.kotest.assertions.json.FieldComparison
@@ -22,8 +22,8 @@ import java.time.LocalDate
 @RecordApplicationEvents
 internal class CommandHandlerKotestIT(
     @Autowired val orderService: OrderService,
-    @Autowired val eventPublisher: ApplicationEventPublisher,
-): DatabaseTest, ShouldSpec() {
+    @Autowired val eventPublisher: ApplicationEventPublisher
+) : DatabaseTest, ShouldSpec() {
     @Autowired lateinit var events: ApplicationEvents
 
     init {
@@ -31,15 +31,15 @@ internal class CommandHandlerKotestIT(
             val commandHandler = OrderCommandHandler(orderService, eventPublisher)
             val order = commandHandler.createOrder(
                 OrderApi(
-                    date= LocalDate.of(2023, 3, 5),
-                    items = setOf(ItemApi(name = "Burger", quantity = 1)),
+                    date = LocalDate.of(2023, 3, 5),
+                    items = setOf(ItemApi(name = "Burger", quantity = 1))
                 )
             )
 
             val orderCreatedEvents = events.stream(OrderCreatedEvent::class.java).toList()
 
             orderCreatedEvents shouldHaveSize 1
-            orderCreatedEvents[0].aggregateId() shouldBeEqualIgnoringCase  order.id.toString()
+            orderCreatedEvents[0].aggregateId() shouldBeEqualIgnoringCase order.id.toString()
             orderCreatedEvents[0].aggregateType() shouldBeEqualIgnoringCase "Order"
             orderCreatedEvents[0].type() shouldBeEqualIgnoringCase "OrderCreated"
             orderCreatedEvents[0].payload().toString().shouldEqualJson(

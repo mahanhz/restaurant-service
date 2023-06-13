@@ -2,7 +2,11 @@ package com.example.restaurant.orderservice.infra.persistence
 
 import com.example.restaurant.orderservice.application.exception.ErrorCode
 import com.example.restaurant.orderservice.application.exception.OrderServiceException
-import com.example.restaurant.orderservice.domain.*
+import com.example.restaurant.orderservice.domain.Item
+import com.example.restaurant.orderservice.domain.Name
+import com.example.restaurant.orderservice.domain.Order
+import com.example.restaurant.orderservice.domain.OrderId
+import com.example.restaurant.orderservice.domain.State
 import com.example.restaurant.orderservice.domain.service.OrderService
 import jakarta.transaction.Transactional
 import org.springframework.stereotype.Service
@@ -12,8 +16,8 @@ import java.util.stream.Collectors
 @Service
 internal class JpaOrderService(
     private val orderRepository: OrderRepository,
-    private val itemRepository: ItemRepository,
-): OrderService {
+    private val itemRepository: ItemRepository
+) : OrderService {
 
     @Transactional
     override fun createOrder(date: LocalDate, items: Set<Item>): Order {
@@ -31,7 +35,7 @@ internal class JpaOrderService(
             items = order.items!!.stream().map {
                 Item(name = Name(it.name!!), quantity = it.quantity!!)
             }.collect(Collectors.toSet()),
-            state = order.state!!,
+            state = order.state!!
         )
     }
 

@@ -10,9 +10,8 @@ import org.springframework.boot.test.autoconfigure.json.JsonTest
 import org.springframework.boot.test.json.JacksonTester
 import java.time.LocalDate
 
-
 @JsonTest
-internal class OrderApiIT: IntegrationTest {
+internal class OrderApiIT : IntegrationTest {
     @Autowired
     private val json: JacksonTester<OrderApi>? = null
 

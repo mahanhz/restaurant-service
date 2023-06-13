@@ -16,11 +16,11 @@ import org.springframework.stereotype.Component
 @Component
 class KitchenCommandHandler(
     private val kitchenService: KitchenService,
-    private val orderCommandHandler: OrderCommandHandler,
+    private val orderCommandHandler: OrderCommandHandler
 ) {
     val logger: Logger = LoggerFactory.getLogger(KitchenCommandHandler::class.java)
 
-    //val order: Order? = null
+    // val order: Order? = null
 
     @Transactional
     fun createChef(chefName: String): ChefApi {

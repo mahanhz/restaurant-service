@@ -7,7 +7,7 @@ import org.testcontainers.containers.MySQLContainer
 import org.testcontainers.utility.DockerImageName
 
 @Transactional
-interface DatabaseTest: IntegrationTest {
+interface DatabaseTest : IntegrationTest {
 
     companion object {
         private val dockerImageName: DockerImageName? =
@@ -20,9 +20,9 @@ interface DatabaseTest: IntegrationTest {
         @JvmStatic
         @DynamicPropertySource
         fun properties(registry: DynamicPropertyRegistry) {
-            registry.add("spring.datasource.url", container::getJdbcUrl);
-            registry.add("spring.datasource.password", container::getPassword);
-            registry.add("spring.datasource.username", container::getUsername);
+            registry.add("spring.datasource.url", container::getJdbcUrl)
+            registry.add("spring.datasource.password", container::getPassword)
+            registry.add("spring.datasource.username", container::getUsername)
         }
     }
 }

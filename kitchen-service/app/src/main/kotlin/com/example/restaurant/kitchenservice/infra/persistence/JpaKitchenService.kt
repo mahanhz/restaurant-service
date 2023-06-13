@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service
 internal class JpaKitchenService(
     private val chefRepository: ChefRepository,
     private val orderCommandHandler: OrderCommandHandler
-): KitchenService {
+) : KitchenService {
     override fun createChef(name: Name): Chef {
         val chefEntity = ChefEntity(name = name.value)
         val chef = chefRepository.save(chefEntity)
@@ -31,7 +31,8 @@ internal class JpaKitchenService(
             return chef
         } else {
             throw KitchenServiceException(
-                "There are no available chefs to prepare order ${orderId}", ErrorCode.ERR_KIT_SER_2
+                "There are no available chefs to prepare order $orderId",
+                ErrorCode.ERR_KIT_SER_2
             )
         }
     }

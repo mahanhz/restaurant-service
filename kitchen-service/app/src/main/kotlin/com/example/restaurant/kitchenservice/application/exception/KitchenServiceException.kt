@@ -1,6 +1,6 @@
 package com.example.restaurant.kitchenservice.application.exception
 
-open class KitchenServiceException: RuntimeException {
+open class KitchenServiceException : RuntimeException {
     val code: ErrorCode
 
     constructor(code: ErrorCode) : super() {

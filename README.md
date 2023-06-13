@@ -33,6 +33,11 @@ The integration tests use TestContainers so docker is needed. See https://www.te
 * Run unit and integration tests (and builds the artifact): **.\gradlew.bat clean build**
 * Run acceptance tests: **.\gradlew.bat acceptanceTest**
 
+## Code formatting
+**ktlint** (https://pinterest.github.io/ktlint) via https://github.com/jlleitschuh/ktlint-gradle  
+* Format script files: **./gradlew runKtlintFormatOverKotlinScripts**
+* Format source files: **./gradlew ktlintFormat**
+
 # Set up the infrastructure (via docker-compose)
 
 ## Linux

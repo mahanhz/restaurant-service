@@ -2,7 +2,7 @@ package com.example.restaurant.orderservice.domain
 
 import java.time.LocalDate
 
-data class Order (
+data class Order(
     val id: OrderId,
     val date: LocalDate,
     val state: State,
@@ -10,7 +10,7 @@ data class Order (
 )
 
 @JvmInline
-value class OrderId (
+value class OrderId(
     val value: Long
 )
 
