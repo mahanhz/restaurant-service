@@ -7,10 +7,11 @@ pluginManagement {
         id("org.springframework.boot") version springBootVersion
         id("io.spring.dependency-management") version springDependencyManagementVersion
         id("com.gorylenko.gradle-git-properties") version gitPropertiesVersion
+        // id("org.jlleitschuh.gradle.ktlint") version "11.3.1"
     }
 
     repositories {
         mavenCentral()
-        maven(url = "https://plugins.gradle.org/m2/")
+        gradlePluginPortal()
     }
 }

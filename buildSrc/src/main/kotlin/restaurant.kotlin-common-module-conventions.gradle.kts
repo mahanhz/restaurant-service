@@ -1,7 +1,9 @@
 import org.gradle.api.tasks.testing.Test
-import org.gradle.kotlin.dsl.*
+// import org.jlleitschuh.gradle.ktlint.reporter.ReporterType
 
 plugins {
+    // id("org.jlleitschuh.gradle.ktlint")
+
     kotlin("jvm")
     kotlin("plugin.spring")
     kotlin("plugin.allopen")
@@ -12,7 +14,22 @@ plugins {
 
 repositories {
     mavenCentral()
+    gradlePluginPortal()
 }
+
+//ktlint {
+//    verbose.set(true)
+//    outputToConsole.set(true)
+//    coloredOutput.set(true)
+//    reporters {
+//        reporter(ReporterType.CHECKSTYLE)
+//        reporter(ReporterType.JSON)
+//        reporter(ReporterType.HTML)
+//    }
+//    filter {
+//        exclude("**/style-violations.kts")
+//    }
+//}
 
 val versions = Versions.fromProperties(project.rootDir)
 
